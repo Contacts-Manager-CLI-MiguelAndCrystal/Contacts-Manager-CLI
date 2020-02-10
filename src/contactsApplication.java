@@ -44,14 +44,22 @@ public class contactsApplication {
         }
         try {
             Path contactsPATH = Paths.get("data", "contacts.txt");
-            Files.write(contactsPATH, Collections.singleton(contactsList.toString()));
-//            File fileName = Files.
-//            FileOutputStream fos = new FileOutputStream("contacts.txt");
-//            ObjectOutputStream oos = new ObjectOutputStream(fos);
-//            oos.writeObject(contacts, contactsList);
+//            Files.write(contactsPATH, Collections.singleton(contactsList.toString()));
+            Files.write(contactsPATH, convertString(contactsList);
+
         } catch (IOException ioe) {
             ioe.printStackTrace();
         }
+    }
+
+    public static ArrayList convertString(ArrayList item){
+        String[] array = new String[item.size()];
+        int index = 0;
+        for (Object value : item) {
+            array[index] = (String) value;
+            index++;
+        }
+        return array;
     }
 
 //    static void readWriteFile(){
@@ -87,7 +95,6 @@ public class contactsApplication {
         Contact person2 = new Contact("Crystal", "676-678-7854");
 
         writeFile(person1.getName() + " " +person1.getNumber());
-
 
     }
 
