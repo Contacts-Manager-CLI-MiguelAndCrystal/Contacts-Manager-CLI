@@ -1,13 +1,16 @@
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
 public class contactsApplication {
-//    static HashMap<String, Contact> contacts = new HashMap<>();
+    static private List<Object> contactsList;
 
     static void newFile() {
         String directory = "data";
@@ -33,16 +36,19 @@ public class contactsApplication {
             ioe.printStackTrace();
         }
     }
-    static void writeFile() {
-        List<String> contactsList = new ArrayList<>();
-
-        contactsList.add("sdfghv");contactsList.add("adg");contactsList.add("afdg");contactsList.add("aefg");
-        for (String contact : contactsList){
+    static void writeFile(Object person) {
+        contactsList = new ArrayList<>();
+        contactsList.add(person);
+        for (Object contact : contactsList){
             System.out.println(contact);
         }
         try {
-            Path contacts = Paths.get("data", "contacts.txt");
-            Files.write(contacts, contactsList);
+            Path contactsPATH = Paths.get("data", "contacts.txt");
+            Files.write(contactsPATH, Collections.singleton(contactsList.toString()));
+//            File fileName = Files.
+//            FileOutputStream fos = new FileOutputStream("contacts.txt");
+//            ObjectOutputStream oos = new ObjectOutputStream(fos);
+//            oos.writeObject(contacts, contactsList);
         } catch (IOException ioe) {
             ioe.printStackTrace();
         }
@@ -73,14 +79,16 @@ public class contactsApplication {
 
     public static void main(String[] args) {
         newFile();
-        writeFile();
+//        writeFile();
 //        readWriteFile();
 
 
-//        Contact person1 = new Contact("Miguel", "775-313-5602");
-//        Contact person2 = new Contact("Crystal", "676-678-7854");
-//
-//        writeFile(person1);
+        Contact person1 = new Contact("Miguel", "775-313-5602");
+        Contact person2 = new Contact("Crystal", "676-678-7854");
+
+        writeFile(person1.getName() + " " +person1.getNumber());
+
+
     }
 
 }
