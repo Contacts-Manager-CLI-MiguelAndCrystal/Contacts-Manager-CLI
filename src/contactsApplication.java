@@ -3,15 +3,12 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
-public class addFile {
+public class contactsApplication {
+//    static HashMap<String, Contact> contacts = new HashMap<>();
 
-    public static void main(String[] args) {
-//        newFile();
-        writeFile();
-//        readWriteFile();
-    }
     static void newFile() {
         String directory = "data";
 
@@ -38,6 +35,7 @@ public class addFile {
     }
     static void writeFile() {
         List<String> contactsList = new ArrayList<>();
+
         contactsList.add("sdfghv");contactsList.add("adg");contactsList.add("afdg");contactsList.add("aefg");
         for (String contact : contactsList){
             System.out.println(contact);
@@ -66,11 +64,23 @@ public class addFile {
 //        contactsList.add("kiwi"); contactsList.add("jackfruit");
 //
 //        try{
-//            Path contact = Paths.get("data", "groceries.txt");
+//            Path contact = Paths.get("data", "contact.txt");
 //            Files.write(contact, contactsList);
 //        }catch(IOException ioe){
 //            ioe.printStackTrace();
 //        }
 //    }
+
+    public static void main(String[] args) {
+        newFile();
+        writeFile();
+//        readWriteFile();
+
+
+//        Contact person1 = new Contact("Miguel", "775-313-5602");
+//        Contact person2 = new Contact("Crystal", "676-678-7854");
+//
+//        writeFile(person1);
+    }
 
 }
