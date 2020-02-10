@@ -4,10 +4,8 @@ import java.io.ObjectOutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.nio.file.StandardOpenOption;
+import java.util.*;
 
 public class contactsApplication {
     static private List<Object> contactsList;
@@ -44,15 +42,14 @@ public class contactsApplication {
         }
         try {
             Path contactsPATH = Paths.get("data", "contacts.txt");
-//            Files.write(contactsPATH, Collections.singleton(contactsList.toString()));
-            Files.write(contactsPATH, convertString(contactsList);
+            Files.write(contactsPATH, Arrays.asList(convertString(contactsList)), StandardOpenOption.APPEND);
 
         } catch (IOException ioe) {
             ioe.printStackTrace();
         }
     }
 
-    public static ArrayList convertString(ArrayList item){
+    public static String[] convertString(List<Object> item){
         String[] array = new String[item.size()];
         int index = 0;
         for (Object value : item) {
@@ -87,14 +84,19 @@ public class contactsApplication {
 
     public static void main(String[] args) {
         newFile();
-//        writeFile();
 //        readWriteFile();
-
+        System.out.println("1. View contacts.");
+        System.out.println("2. Add a new contact.");
+        System.out.println("3. Search a contact by name.");
+        System.out.println("4. Delete an existing contact.");
+        System.out.println("5. Exit.");
+        System.out.println("Enter an option (1, 2, 3, 4 or 5):");
 
         Contact person1 = new Contact("Miguel", "775-313-5602");
         Contact person2 = new Contact("Crystal", "676-678-7854");
 
         writeFile(person1.getName() + " " +person1.getNumber());
+        writeFile(person2.getName() + " " +person2.getNumber());
 
     }
 

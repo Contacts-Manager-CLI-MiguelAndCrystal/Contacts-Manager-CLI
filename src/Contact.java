@@ -4,7 +4,6 @@ import java.util.ArrayList;
 public class Contact {
     private String name;
     private String number;
-//    private ArrayList<String> info = newArrayList<>();
 
 
     public Contact(String name, String number){
@@ -26,5 +25,9 @@ public class Contact {
 
     public void setNumber(String number) {
         this.number = number;
+    }
+
+    public String toMyString() {
+        return this.name + " " + this.number;
     }
 }
