@@ -13,7 +13,6 @@ import util.Input;
 
 public class ContactsApplication {
     static private List<Contact> contactsList;
-    private static Scanner scanner = new Scanner(System.in);
 
     static void newFile() {
         String directory = "data";
@@ -81,6 +80,15 @@ public class ContactsApplication {
         }
     }
 
+    public String searchString(String userInput, List<Contact> contactsList){
+        for (Contact string : contactsList){
+            if (string.contains(userInput)){
+                return userInput;
+            }
+        }
+//        return l;
+    }
+
     public static void main(String[] args) {
         newFile();
 //        Contact person1 = new Contact("Miguel", "775-313-5602");
@@ -102,12 +110,13 @@ public class ContactsApplication {
 
         while(decision) {
 
-
             int choice = input.getInt(1,5);
+            System.out.println("\n");
 
             switch (choice) {
                 case(1):
                     readWriteFile();
+                    System.out.println("\n");
                     getContacts();
                     break;
                 case(2):
@@ -117,10 +126,12 @@ public class ContactsApplication {
                     String userInputNumber = scanner.nextLine();
                     Contact person = new Contact(userInputName, userInputNumber);
                     writeFile(person);
+                    System.out.println("\n");
                     getContacts();
                     break;
                 case(3):
-                    System.out.println("Search for a contact by name");
+                    String name = input.getString("Enter a name to search:");
+                    searchString(name);
                     getContacts();
                     break;
                 case(4):

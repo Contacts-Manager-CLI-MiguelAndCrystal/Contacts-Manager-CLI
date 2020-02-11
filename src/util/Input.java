@@ -13,6 +13,13 @@ public class Input {
 
     }
 
+    public String getString(String prompt){
+        String answer;
+        System.out.println(prompt);
+        answer = this.scanner.next();
+        return answer;
+    }
+
     public boolean yesNo(String prompt){
         String confirm;
         System.out.println(prompt);

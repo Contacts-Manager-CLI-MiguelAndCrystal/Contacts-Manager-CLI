@@ -29,10 +29,6 @@ public class Contact {
         this.number = number;
     }
 
-    public String toMyString() {
-        return this.name + " " + this.number;
-    }
-
     public int getInt(int min, int max){
 
         int answer;
