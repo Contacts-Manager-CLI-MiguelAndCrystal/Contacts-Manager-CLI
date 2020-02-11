@@ -13,6 +13,7 @@ import util.Input;
 
 public class ContactsApplication {
     static private List<Contact> contactsList;
+    static private Scanner scanner = new Scanner(System.in);
 
     static void newFile() {
         String directory = "data";
@@ -64,6 +65,7 @@ public class ContactsApplication {
 
         try{
             Path contact = Paths.get("data", "contacts.txt");
+
             contactsList = Files.readAllLines(contact);
             for(String line : contactsList){
                 System.out.println(line);
@@ -80,13 +82,38 @@ public class ContactsApplication {
         }
     }
 
-    public String searchString(String userInput, List<Contact> contactsList){
-        for (Contact string : contactsList){
-            if (string.contains(userInput)){
-                return userInput;
+    public static void searchString(String userInput){
+
+        Path contact = Paths.get("data","contacts.txt");
+        List<String> PersonList;
+        try{
+            PersonList = Files.readAllLines(contact);
+            for(String person : PersonList){
+                if(person.toLowerCase().contains(userInput.toLowerCase())){
+                    System.out.println("Contact: " + person + "\n");
+                }
             }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-//        return l;
+    }
+
+    public static void deleteString(String input){
+
+        Path contact = Paths.get("data","contacts.txt");
+        List<String> PersonList;
+        try{
+            PersonList = Files.readAllLines(contact);
+            for(String person : PersonList){
+                if(person.toLowerCase().contains(input.toLowerCase())){
+                    int index = PersonList.indexOf(person);
+                    System.out.println(index);
+                        PersonList.remove(index);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public static void main(String[] args) {
@@ -135,7 +162,8 @@ public class ContactsApplication {
                     getContacts();
                     break;
                 case(4):
-                    System.out.println("Delete a contact by name");
+                    String nameDelete = input.getString("Enter a name to delete:");
+                    deleteString(nameDelete);
                     getContacts();
                     break;
                 case(5):
