@@ -1,13 +1,16 @@
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.ObjectOutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
-public class contactsApplication {
+import util.Input;
+
+
+public class ContactsApplication {
     static private List<Object> contactsList;
 
     static void newFile() {
@@ -85,18 +88,42 @@ public class contactsApplication {
     public static void main(String[] args) {
         newFile();
 //        readWriteFile();
-        System.out.println("1. View contacts.");
-        System.out.println("2. Add a new contact.");
-        System.out.println("3. Search a contact by name.");
-        System.out.println("4. Delete an existing contact.");
-        System.out.println("5. Exit.");
-        System.out.println("Enter an option (1, 2, 3, 4 or 5):");
 
-        Contact person1 = new Contact("Miguel", "775-313-5602");
-        Contact person2 = new Contact("Crystal", "676-678-7854");
+        boolean decision = true;
+        Input input = new Input();
 
-        writeFile(person1.getName() + " " +person1.getNumber());
-        writeFile(person2.getName() + " " +person2.getNumber());
+
+        while(decision) {
+            System.out.println("1. View contacts.");
+            System.out.println("2. Add a new contact.");
+            System.out.println("3. Search a contact by name.");
+            System.out.println("4. Delete an existing contact.");
+            System.out.println("5. Exit.");
+
+
+//            Contact person1 = new Contact("Miguel", "775-313-5602");
+//            Contact person2 = new Contact("Crystal", "676-678-7854");
+
+//            writeFile(person1.getName() + " " + person1.getNumber());
+//            writeFile(person2.getName() + " " + person2.getNumber());
+
+            int choice = input.getInt(1,5);
+
+
+            switch (choice) {
+                case(1):
+                    boolean confirm = input.yesNo("Are you sure you want to exit?");
+                    if(confirm){
+                        System.out.println("Goodbye!!!");
+                        decision = false;
+                    }else{
+                        System.out.println("Restarting......");
+                    }
+                    break;
+                case(2):
+            }
+
+        }
 
     }
 
