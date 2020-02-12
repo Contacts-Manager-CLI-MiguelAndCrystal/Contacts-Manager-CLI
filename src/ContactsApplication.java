@@ -40,25 +40,17 @@ public class ContactsApplication {
         }
     }
     static void writeFile(Contact person) {
-//        contactsList = new ArrayList<>();
-//        contactsList.add(person);
-//        for (Object contact : contactsList){
-//            System.out.println(contact);
-//        }
+
         try {
             Path contactsPATH = Paths.get("data", "contacts.txt");
             List<String> newPerson = Arrays.asList(person.getName() + "            " + person.getNumber());
             Files.write(contactsPATH, newPerson, StandardOpenOption.APPEND);
-//
+
         } catch (IOException ioe) {
             ioe.printStackTrace();
         }
     }
 
-//    public static String[] convertString(Contact person){
-//        String[] array = new String[1];
-//        return array;
-//    }
 
     static void readWriteFile(){
         List<String> contactsList = null;
@@ -114,9 +106,7 @@ public class ContactsApplication {
                 }
                 newList.add(person);
             }
-//            for (String name : newList){
-//                System.out.println(name);
-//            }
+
             Files.write(Paths.get("data","contacts.txt"), newList);
         } catch (IOException e) {
             e.printStackTrace();
@@ -129,7 +119,7 @@ public class ContactsApplication {
     }
 
     public static void getContacts(){
-        System.out.println("1. View contacts.");
+        System.out.println("\n1. View contacts.");
         System.out.println("2. Add a new contact.");
         System.out.println("3. Search a contact by name.");
         System.out.println("4. Delete an existing contact.");
@@ -145,8 +135,9 @@ public class ContactsApplication {
 
             switch (choice) {
                 case(1):
-                    System.out.printf("%-8s | %-25s | \n", "Name", "Phone number");
-                    System.out.printf("%25s \n", "-------------------------------------");
+                    System.out.println("-------------------------------------");
+                    System.out.printf("%-15s | %18s | \n", "Name", "Phone number");
+                    System.out.println("-------------------------------------");
                     readWriteFile();
                     System.out.println("\n");
                     getContacts();
@@ -173,7 +164,7 @@ public class ContactsApplication {
                     getContacts();
                     break;
                 case(5):
-                    boolean confirm = input.yesNo("Are you sure you want to exit?");
+                    boolean confirm = input.yesNo("Are you sure you want to exit? [y/n]");
                     if(confirm){
                         System.out.println("Goodbye!!!");
                         decision = false;
@@ -186,11 +177,9 @@ public class ContactsApplication {
 
         }
     }
-//    Crystal Thibodeau      830-446-7865
-//    Mike Wazowski          775-678-1346
-//    Miguel Vera            775-313-5602
-//    Alfredo Gonzo          567-789-8765
-//    Mike Bradshaw          830-445-6512
-//    Mom Home            876-456-1347
+//    Mike Wazowski            775-678-1346
+//    Alfredo Gonzo            567-789-8765
+//    Mike Bradshaw            830-445-6512
+//    Lynn Stephens            567-456-2457
 
 }
