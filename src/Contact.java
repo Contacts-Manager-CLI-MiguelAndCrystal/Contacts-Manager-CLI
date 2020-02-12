@@ -14,11 +14,11 @@ public class Contact {
     }
 
     public String getName() {
-        return this.name;
+        return String.format("%-8s |", this.name + "");
     }
 
     public String getNumber() {
-        return this.number;
+        return String.format("%-12s |", this.number + "");
     }
 
     public void setName(String name) {

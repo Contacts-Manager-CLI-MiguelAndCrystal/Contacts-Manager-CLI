@@ -90,6 +90,7 @@ public class ContactsApplication {
             PersonList = Files.readAllLines(contact);
             for(String person : PersonList){
                 if(person.toLowerCase().contains(userInput.toLowerCase())){
+                    System.out.println("-------------------------");
                     System.out.println("Contact: " + person + "\n");
                 }
             }
@@ -102,15 +103,21 @@ public class ContactsApplication {
 
         Path contact = Paths.get("data","contacts.txt");
         List<String> PersonList;
-//        List<String> toRemove = new ArrayList<>();
+
         try{
             PersonList = Files.readAllLines(contact);
+            List<String> newList = new ArrayList<>();
             for(String person : PersonList){
                 if(person.toLowerCase().contains(input.toLowerCase())){
-//                    int index = PersonList.indexOf(person);
-                    PersonList.remove(input);
+
+                    continue;
                 }
+                newList.add(person);
             }
+//            for (String name : newList){
+//                System.out.println(name);
+//            }
+            Files.write(Paths.get("data","contacts.txt"), newList);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -118,10 +125,6 @@ public class ContactsApplication {
 
     public static void main(String[] args) {
         newFile();
-//        Contact person1 = new Contact("Miguel", "775-313-5602");
-//        Contact person2 = new Contact("Crystal", "676-678-7854");
-//        writeFile(person1.getName() + " " + person1.getNumber());
-//        writeFile(person2.getName() + " " + person2.getNumber());
         getContacts();
     }
 
@@ -142,6 +145,8 @@ public class ContactsApplication {
 
             switch (choice) {
                 case(1):
+                    System.out.printf("%-8s | %25s | \n", "Name", "Phone number");
+                    System.out.printf("%25s \n", "------------------------------");
                     readWriteFile();
                     System.out.println("\n");
                     getContacts();
@@ -159,6 +164,7 @@ public class ContactsApplication {
                 case(3):
                     String name = input.getString("Enter a name to search:");
                     searchString(name);
+                    System.out.println("\n");
                     getContacts();
                     break;
                 case(4):
