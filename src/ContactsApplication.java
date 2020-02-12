@@ -102,13 +102,13 @@ public class ContactsApplication {
 
         Path contact = Paths.get("data","contacts.txt");
         List<String> PersonList;
+//        List<String> toRemove = new ArrayList<>();
         try{
             PersonList = Files.readAllLines(contact);
             for(String person : PersonList){
                 if(person.toLowerCase().contains(input.toLowerCase())){
-                    int index = PersonList.indexOf(person);
-                    System.out.println(index);
-                        PersonList.remove(index);
+//                    int index = PersonList.indexOf(person);
+                    PersonList.remove(input);
                 }
             }
         } catch (IOException e) {
