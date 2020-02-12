@@ -47,7 +47,7 @@ public class ContactsApplication {
 //        }
         try {
             Path contactsPATH = Paths.get("data", "contacts.txt");
-            List<String> newPerson = Arrays.asList(person.getName() + " " + person.getNumber());
+            List<String> newPerson = Arrays.asList(person.getName() + "            " + person.getNumber());
             Files.write(contactsPATH, newPerson, StandardOpenOption.APPEND);
 //
         } catch (IOException ioe) {
@@ -145,8 +145,8 @@ public class ContactsApplication {
 
             switch (choice) {
                 case(1):
-                    System.out.printf("%-8s | %25s | \n", "Name", "Phone number");
-                    System.out.printf("%25s \n", "------------------------------");
+                    System.out.printf("%-8s | %-25s | \n", "Name", "Phone number");
+                    System.out.printf("%25s \n", "-------------------------------------");
                     readWriteFile();
                     System.out.println("\n");
                     getContacts();
@@ -186,5 +186,11 @@ public class ContactsApplication {
 
         }
     }
+//    Crystal Thibodeau      830-446-7865
+//    Mike Wazowski          775-678-1346
+//    Miguel Vera            775-313-5602
+//    Alfredo Gonzo          567-789-8765
+//    Mike Bradshaw          830-445-6512
+//    Mom Home            876-456-1347
 
 }
